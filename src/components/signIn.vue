@@ -1,38 +1,35 @@
 <template>
-  <div class="signIn">
-      <form class="form" v-show="!submited">
-        <div class="field">
-          <label class="label">Full Name</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="John Smith">
-          </div>
-        </div>
-
+  <div class="signIn" v-show="popUpOpend">
+      <form class="form" v-show="!submited" method="POST" action="/users/add">
+        <a>
+          <span class="icon" @click="close">
+            <i class="fas fa-times"></i>
+          </span>
+        </a>
         <div class="field">
           <label class="label">Username</label>
           <div class="control">
-            <input class="input is-success" type="text" placeholder="JohnSmithBla">
+            <input class="input" type="text" placeholder="JohnSmithBla" name="username">
           </div>
           <p v-show="invalidUsername" class="help is-danger">This username is already exist</p>
         </div>
 
         <div class="field">
-          <label class="label">Email</label>
+          <label class="label">Password</label>
           <div class="control">
-            <input class="input is-danger" type="email" placeholder="Email input">
+            <input class="input" type="password" placeholder="Password" name="password">
           </div>
-          <p v-show="invalidEmail" class="help is-danger">This email is invalid</p>
         </div>
 
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-link" @click="submit">Submit</button>
-          </div>
-          <div class="control">
-            <button class="button">Cancel</button>
+            <button class="button is-link" type="submit" value="submit" @click="submit">Submit</button>
           </div>
         </div>
       </form>
+      <div class="backend-res" v-show="submited">
+
+      </div>
   </div>
 </template>
 
@@ -43,7 +40,8 @@ export default {
     return {
       invalidUsername: false,
       invalidEmail: false,
-      submited: false
+      submited: false,
+      popUpOpend: true
     }
   },
   methods: {
@@ -53,6 +51,9 @@ export default {
       } else {
         this.submited = true
       }
+    },
+    close () {
+      this.popUpOpend = false
     }
   }
 }

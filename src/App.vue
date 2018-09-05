@@ -1,12 +1,16 @@
 <template>
   <div id="app">
       <nav-bar @scrollingEvent="scrollTo"></nav-bar>
-      <home ref="home"></home>
-      <div ref="page2" class="columns container">
-        <page2 class="column" :class='{slideInDown: this.slideDown, slideInUp: this.slideUp}'></page2>
-        <slider class="column" :class='{slideInDown: this.slideDown, slideInUp: this.slideUp}'></slider>
+      <div ref="home" class="home">
+        <home></home>
       </div>
-      <page3 ref="page3"></page3>
+      <div ref="page2" class="columns container">
+        <page2 class="column"></page2>
+        <slider class="column"></slider>
+      </div>
+      <div class="page3" ref="page3">
+        <page3></page3>
+      </div>
       <footerComponent></footerComponent>
       <router-view/>
   </div>
@@ -42,23 +46,12 @@ export default {
     scrollTo (page) {
       if (page === 'page2') {
         this.$refs.page2.scrollIntoView(true)
-        this.slideDown = true
       } else if (page === 'page3') {
         this.$refs.page3.scrollIntoView(true)
       } else {
         this.$refs.home.scrollIntoView(true)
       }
     }
-    // scrollTo (page) {
-    //   if (this.cuurentPage === 'home') {
-    //     if (page === 'page2') {
-    //       this.$refs.page2.scrollIntoView(true)
-    //       this.slideDown = true
-    //     } else if(page === 'page2') {
-    //       this.$refs.page2.scrollIntoView(true)
-    //     }
-    //   }
-    // }    
   }
 }
 </script>
@@ -92,6 +85,12 @@ export default {
   .container{
     padding: 10%;
   }
+}
+
+.tiny-purple{
+  text-align: left;
+  color: purple;
+  font-size: 0.7em;
 }
 
 </style>

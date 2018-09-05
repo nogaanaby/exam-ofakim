@@ -5,7 +5,7 @@
         <img src="../assets/shield.png">
       </span>
       <h2 class="title is-large">at nunc elit</h2>
-      <p class="p is-small">sed tincidunt ligula. Vestibulum at nunc elit. Praesent aliquet ligula mi, in luctus elit volutpat porta. Phasellus molestie diam vel nisi sodales, a eleifend augue laoreet. Sed nec eleifend justo. Nam et sollicitudin odio.sed tincidunt ligula. Vestibulum at nunc elit. Praesent aliquet ligula mi, in luctus elit volutpat porta. Phasellus molestie diam vel nisi sodales, a eleifend augue laoreet. Sed nec eleifend justo. Nam et sollicitudin odio.</p>
+      <p class="p is-small">Popup boxes are the most useful way of showing a warning or any other important information to the website visitors in many HTML5 templates. In this article I’m going to walk you through the creation of a very simple popup box with shadow overlay and close button</p>
     </div>
     <div class="columns creditBank">
       <div class="column is-four-fifths">
@@ -15,34 +15,34 @@
 
         <a class="pay-b">
           <span class="icon is-medium bay-b-icon">
-            <i class="fas fa-align-left"></i>
+            <i class="fas fa-barcode"></i>
           </span>
-          <span class="bay-b-text">Left</span>
+          <span class="bay-b-text">payment</span>
         </a>
 
         <a class="pay-b">
           <span class="icon is-medium bay-b-icon">
-            <i class="fas fa-align-left"></i>
+            <i class="far fa-comments"></i>
           </span>
-          <span class="bay-b-text">Left</span>
+          <span class="bay-b-text">costumers</span>
         </a>
 
         <a class="pay-b">
           <span class="icon is-medium bay-b-icon">
-            <i class="fas fa-align-left"></i>
+            <i class="fas fa-address-card"></i>
           </span>
-          <span class="bay-b-text">Left</span>
+          <span class="bay-b-text">subscribers</span>
         </a>
 
         <a class="pay-b">
           <span class="icon is-medium bay-b-icon">
-            <i class="fas fa-align-left"></i>
+            <i class="fas fa-bullhorn"></i>
           </span>
-          <span class="bay-b-text">Left</span>
+          <span class="bay-b-text">reportings</span>
         </a>      
 
         <img class="line" src="../assets/line.png">
-        <p class="p is-small">estibulum at nunc elit. Praesent aliquet ligula mi,</p>
+        <p class="p is-small tiny-purple">estibulum at nunc elit. Praesent</p>
       </div>
     </div>
   </div>
@@ -98,9 +98,7 @@ export default {
 }
 .pay-b{
   color: black;
-  padding: 10px;
-  width: 100%;
-  display: flex;
+  width: 100%
 }
 .pay-b:hover{
   border: 1px solid lightgray;
@@ -115,11 +113,11 @@ export default {
   font-weight: bold;
 }
 .bay-b-text{
-  font-size: 1.5em;
-  margin: auto auto auto 10px;
+  font-size: 1em;
+  float: left;
 }
 .bay-b-icon{
-  margin: auto 10px auto auto; /** top right buttom left*/
+  float: left;
 }
 img.line{
   float: left;

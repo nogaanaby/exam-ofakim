@@ -1,50 +1,25 @@
   <template>
   <div class="footer">
     <div class="columns is-mobile">
+
       <div class="column links">
         <h5 class="title is-5">Title Bla</h5>
         <ul>
-          <li>some link</li>
-          <li>some link</li>
-          <li>some link</li>
-          <li>some link</li>
+          <li><dropDownQuickLink :options = "['United State', 'Israel', 'Japan', 'Turkey']"></dropDownQuickLink></li>
+          <li><dropDownQuickLink :options="['English', 'Hebrew', 'Chinese']"></dropDownQuickLink></li>
         </ul>
       </div>
-      <div class="column links">
-        <h5 class="title is-5">Title Bla</h5>
-        <ul>
-          <li>some link</li>
-          <li>some link</li>
-          <li>some link</li>
-        </ul>
-      </div>
-      <div class="column links">
-        <h5 class="title is-5">Title Bla</h5>
-        <ul>
-          <li>some link</li>
-          <li>some link</li>
-          <li>some link</li>
-          <li>some link</li>
-          <li>some link</li>
-        </ul>
-      </div>
-      <div class="column links">
-        <h5 class="title is-5">Title Bla</h5>
-        <ul>
-          <li>some link</li>
-          <li>some link</li>
-        </ul>
-      </div>
+
     </div>
   </div>
 </template>
 
 <script>
-
+import dropDownQuickLink from '@/components/dropDownQuickLink.vue'
 export default {
   name: 'footerComponent',
   components: {
-
+    dropDownQuickLink
   },
   data () {
     return {

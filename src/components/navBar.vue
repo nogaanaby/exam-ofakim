@@ -79,7 +79,7 @@ export default {
   width: 100%;
   z-index: 1;
 }
-.header{  
+.header{
   background-color: rgba(241, 250, 255, 0.9);
   display: flex;
   flex-direction: row;

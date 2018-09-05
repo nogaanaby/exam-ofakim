@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const mongojs = require('mongojs')
+// you need to open a db and collection on mongo that matches those names
 const db = mongojs('nodejsSTART', ['users'])
 
 const app = express()
@@ -24,23 +25,19 @@ app.post('/users/add', function (req, res) {
     if (err) {
       console.log(err)
     }
-    res.send('user added!')
+    res.send('User Added!')
   })
 })
 
 app.post('/users/login', function (req, res) {
-  const newUser = {
-    username: req.body.username,
-    password: req.body.password
+  const checkUser = db.users.find({ qty: { username: req.body.username, password: req.body.password } })
+  if (checkUser) {
+    res.send('You Are In!')
+  } else {
+    res.send('There are no user who matches this input')
   }
-  db.users.insert(newUser, (err) => {
-    if (err) {
-      console.log(err)
-    }
-    res.send('user added!')
-  })
 })
 
 app.listen(3000, function () {
-  console.log('server on port 3000 by ng')
+  console.log('server on port 3000 by noga')
 })
