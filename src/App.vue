@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-      <nav-bar></nav-bar>
-      <home></home>
-      <div class="columns container">
-        <page2 class="column"></page2>
-        <slider class="column"></slider>
+      <nav-bar @scrollingEvent="scrollTo"></nav-bar>
+      <home ref="home"></home>
+      <div ref="page2" class="columns container">
+        <page2 class="column" :class='{slideInDown: this.slideDown, slideInUp: this.slideUp}'></page2>
+        <slider class="column" :class='{slideInDown: this.slideDown, slideInUp: this.slideUp}'></slider>
       </div>
-      <page3></page3>
+      <page3 ref="page3"></page3>
       <footerComponent></footerComponent>
       <router-view/>
   </div>
@@ -30,6 +30,35 @@ export default {
     page2,
     page3,
     footerComponent
+  },
+  data () {
+    return {
+      cuurentPage: 'home',
+      slideDown: false,
+      slideUp: false
+    }
+  },
+  methods: {
+    scrollTo (page) {
+      if (page === 'page2') {
+        this.$refs.page2.scrollIntoView(true)
+        this.slideDown = true
+      } else if (page === 'page3') {
+        this.$refs.page3.scrollIntoView(true)
+      } else {
+        this.$refs.home.scrollIntoView(true)
+      }
+    }
+    // scrollTo (page) {
+    //   if (this.cuurentPage === 'home') {
+    //     if (page === 'page2') {
+    //       this.$refs.page2.scrollIntoView(true)
+    //       this.slideDown = true
+    //     } else if(page === 'page2') {
+    //       this.$refs.page2.scrollIntoView(true)
+    //     }
+    //   }
+    // }    
   }
 }
 </script>
@@ -49,10 +78,20 @@ export default {
   padding: 0;
   background-color: aliceblue;
 }
-.container{
-  width: 70%;
-  margin: auto;
-  padding: 5%;
+/**** desktop ****/
+@media only screen and (min-width:401px) {
+  .container{
+    width: 70%;
+    margin: auto;
+    padding: 5%;
+  }
+}
+
+/**** mobile ****/
+@media only screen and (max-width:400px) {
+  .container{
+    padding: 10%;
+  }
 }
 
 </style>

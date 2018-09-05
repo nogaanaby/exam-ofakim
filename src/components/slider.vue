@@ -8,9 +8,9 @@
       </span>
 
       <div class="slideImg column is-three-fifths">
-        <img v-if="imgS === 1" :class="{slideLeft: this.direction ==='next', slideRight: this.direction==='back'}" src="../assets/phone.jpg">
-        <img v-if="imgS === 2" :class="{slideLeft: this.direction ==='next', slideRight: this.direction==='back'}" src="../assets/phone2.jpg">
-        <img v-if="imgS === 3" :class="{slideLeft: this.direction ==='next', slideRight: this.direction==='back'}" src="../assets/phone3.jpg">
+        <img v-show="imgS === 1" :class="{slideLeft: this.direction ==='next', slideRight: this.direction==='back'}" src="../assets/phone.jpg">
+        <img v-show="imgS === 2" :class="{slideLeft: this.direction ==='next', slideRight: this.direction==='back'}" src="../assets/phone2.jpg">
+        <img v-show="imgS === 3" :class="{slideLeft: this.direction ==='next', slideRight: this.direction==='back'}" src="../assets/phone3.jpg">
       </div>
 
       <span class="column arrows">
@@ -64,13 +64,16 @@ export default {
 .arrows-icon{
   margin: auto;
 }
+.slideImg{
+  overflow-x: hidden;
+}
 .slideLeft{
   position:relative;
   -webkit-animation: slideLeft 0.4s;
   animation: slideLeft 0.4s;
 }
 @keyframes slideLeft {
-    0%   {left: 50px;}
+    0%   {left: 100px;}
     100%  {left: 0px;}
 }
 .slideRight{
@@ -79,7 +82,7 @@ export default {
   animation: slideRight 0.4s;
 }
 @keyframes slideRight {
-    0%   {right: 50px;}
+    0%   {right: 100px;}
     100%  {right: 0px;}
 }
 </style>

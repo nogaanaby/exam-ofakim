@@ -1,6 +1,6 @@
 <template>
   <div class="signIn">
-      <form class="form">
+      <form class="form" v-show="!submited">
         <div class="field">
           <label class="label">Full Name</label>
           <div class="control">
@@ -10,26 +10,26 @@
 
         <div class="field">
           <label class="label">Username</label>
-          <div class="control has-icons-left has-icons-right">
-            <input class="input is-success" type="text" placeholder="JohnSmithBla" value="bulma">
+          <div class="control">
+            <input class="input is-success" type="text" placeholder="JohnSmithBla">
           </div>
           <p v-show="invalidUsername" class="help is-danger">This username is already exist</p>
         </div>
 
         <div class="field">
           <label class="label">Email</label>
-          <div class="control has-icons-left has-icons-right">
-            <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+          <div class="control">
+            <input class="input is-danger" type="email" placeholder="Email input">
           </div>
           <p v-show="invalidEmail" class="help is-danger">This email is invalid</p>
         </div>
 
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-link">Submit</button>
+            <button class="button is-link" @click="submit">Submit</button>
           </div>
           <div class="control">
-            <button class="button is-text">Cancel</button>
+            <button class="button">Cancel</button>
           </div>
         </div>
       </form>
@@ -42,11 +42,18 @@ export default {
   data () {
     return {
       invalidUsername: false,
-      invalidEmail: false
+      invalidEmail: false,
+      submited: false
     }
   },
   methods: {
-
+    submit () {
+      if (this.submited) {
+        this.submited = false
+      } else {
+        this.submited = true
+      }
+    }
   }
 }
 </script>
