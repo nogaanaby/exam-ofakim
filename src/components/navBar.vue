@@ -33,7 +33,7 @@
           </span>
       </div>
       <div class="mobileMenu hideOnDesktop stretchDown" v-if="openMobileMenu">
-          <a class="menu-M hideOnMobile"
+          <a class="menu-M hideOnDesktop"
             v-for="(page, i) in pages"
             :key="page[i]"
             @click="scroll(page)">
@@ -119,7 +119,7 @@ export default {
 .mobileMenu{
   background-color: rgba(241, 250, 255, 0.9);
   width: 200px;
-  height: 200px;
+  height: 250px;
   float: right;
   display: flex;
   flex-direction: column;

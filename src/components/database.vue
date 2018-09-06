@@ -24,8 +24,8 @@ export default {
     }
   },
   methods: {
-    async pvpGetOnlinePlayers () {
-      const response = await this.$axios.get('/users')
+    async getUsers () {
+      const response = await this.$axios.get('/getUsers')
       this.users = response.data
     }
   }
@@ -46,6 +46,6 @@ export default {
   padding: 60px;
 }
 h1.title.is-small{
-  margin: 80px;
+  margin-top: 100px;
 }
 </style>

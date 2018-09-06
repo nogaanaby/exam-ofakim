@@ -9,7 +9,7 @@ const app = express()
 
 // Body parser Middleware
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // set static path
 app.use(express.static(path.join(__dirname, '../dist')))
@@ -20,9 +20,10 @@ function asyncWrap (fn) {
   return (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 }
 
-app.get('/users', asyncWrap(async (req, res) => {
+app.get('/getUsers', asyncWrap(async (req, res) => {
   res.send(db.users.find())
-}))
+})
+)
 
 // app.get('/onlineUsers', asyncWrap(async (req, res) => {
 //   res.send(pvp.getOnlineUsers())
@@ -33,7 +34,7 @@ app.post('/users/add', function (req, res) {
     username: req.body.username,
     password: req.body.password
   }
-  db.users.insert(newUser, (err) => {
+  db.users.insert(newUser, err => {
     if (err) {
       console.log(err)
     }
@@ -42,7 +43,9 @@ app.post('/users/add', function (req, res) {
 })
 
 app.post('/users/login', function (req, res) {
-  const checkUser = db.users.find({ qty: { username: req.body.username, password: req.body.password } })
+  const checkUser = db.users.find({
+    qty: { username: req.body.username, password: req.body.password }
+  })
   if (checkUser) {
     res.send('You Are In!')
   } else {
