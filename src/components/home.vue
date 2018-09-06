@@ -4,14 +4,17 @@
       <h1 class="title is-small">{{msg}}</h1>
       <img src="../assets/line.png">
       <p class="p is-small">sed tincidunt ligula. Vestibulum at nunc elit. Praesent aliquet ligula mi, in luctus elit volutpat porta. Phasellus molestie diam vel nisi sodales, a eleifend augue laoreet. Sed nec eleifend justo. Nam et sollicitudin odio.</p>
-      <a class="" @click="openForm">
+      <a class="" @click="openSignIn = !openSignIn">
         <img src="../assets/btn-acc.png">
       </a>
-      <a class="" @click="openForm">
+      <a class="" @click="openContact = !openContact">
         <img src="../assets/sales-btn.png">
       </a>
       <div class="container bounceIn" v-if="openSignIn">
       <sign-in></sign-in>
+      </div>
+      <div class="container bounceIn" v-if="openContact">
+      <contact-us></contact-us>
       </div>
     </div>
   </div>
@@ -19,25 +22,22 @@
 
 <script>
 import signIn from '@/components/signIn'
+import contactUs from '@/components/contactUs'
 export default {
   name: 'home',
   components: {
-    signIn
+    signIn,
+    contactUs
   },
   data () {
     return {
       msg: 'Welcome To Chocolate Life',
-      openSignIn: false
+      openSignIn: false,
+      openContact: false
     }
   },
   methods: {
-    openForm () {
-      if (this.openSignIn) {
-        this.openSignIn = false
-      } else {
-        this.openSignIn = true
-      }
-    }
+
   }
 }
 </script>

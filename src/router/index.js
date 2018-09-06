@@ -2,10 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 /* components */
-import navBar from '@/components/navBar'
-import signIn from '@/components/signIn'
-import home from '@/components/home'
-import slider from '@/components/slider'
+import database from '@/components/database'
+import singlePageApp from '@/components/singlePageApp'
 
 Vue.use(Router)
 
@@ -13,27 +11,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'App'
+      name: 'singlePageApp',
+      component: singlePageApp
     },
     {
-      path: '/signIn',
-      name: 'signIn',
-      component: signIn
-    },
-    {
-      path: '/navBar',
-      name: 'navBar',
-      component: navBar
-    },
-    {
-      path: '/home',
-      name: 'home',
-      component: home
-    },
-    {
-      path: '/slider',
-      name: 'slider',
-      component: slider
+      path: '/database',
+      name: 'database',
+      component: database
     }
   ],
   mode: 'history'

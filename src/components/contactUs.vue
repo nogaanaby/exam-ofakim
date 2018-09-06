@@ -1,23 +1,29 @@
 <template>
-  <div class="signIn" v-show="popUpOpend">
+  <div class="contactUs" v-show="popUpOpend">
       <form class="form">
         <a>
-          <span class="icon" @click="close">
+          <span class="icon" @click="popUpOpend = false">
             <i class="fas fa-times"></i>
           </span>
         </a>
         <div class="field">
-          <label class="label">Username</label>
+          <label class="label">Email</label>
           <div class="control">
-            <input class="input" type="text" placeholder="JohnSmithBla" name="username">
+            <input class="input" type="text" placeholder="me@email.com">
           </div>
-          <p v-show="invalidUsername" class="help is-danger">This username is already exist</p>
         </div>
 
         <div class="field">
-          <label class="label">Password</label>
+          <label class="label">Title</label>
           <div class="control">
-            <input class="input" type="password" placeholder="Password" name="password">
+            <input class="input" type="text" placeholder="Title">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Message</label>
+          <div class="control">
+            <textarea class="textarea" placeholder="write your message"></textarea>
           </div>
         </div>
 
@@ -32,24 +38,14 @@
 
 <script>
 export default {
-  name: 'signIn',
+  name: 'contactUs',
   data () {
     return {
-      invalidUsername: false,
       popUpOpend: true
     }
   },
   methods: {
-    submit () {
-      if (this.submited) {
-        this.submited = false
-      } else {
-        this.submited = true
-      }
-    },
-    close () {
-      this.popUpOpend = false
-    }
+
   }
 }
 </script>
@@ -64,6 +60,19 @@ export default {
   width: 80%;
 }
 .signIn{
+  display: block;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  margin:0;
+  padding:0;
+  overflow: auto;
+}
+
+.contactUs{
   display: block;
   position: absolute;
   z-index: 1;

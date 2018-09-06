@@ -4,17 +4,21 @@
           <a class="logo">
             <img src="../assets/logo.png" height="60px" width="200px">
           </a>
-          <a class="menu-b hideOnMobile">
-            <span class="menu-b-text" @click="scroll('home')" >Home</span>
+          <a class="menu-b hideOnMobile"
+            v-for="(page, i) in pages"
+            :key="page[i]"
+            @click="scroll(page)">
+            <router-link class="link" to="/">
+              <span class="menu-b-text" >{{page}}</span>
+            </router-link>
           </a>
           <a class="menu-b hideOnMobile">
-            <span class="menu-b-text" @click="scroll('page2')" >page2</span>
+            <router-link class="link" to="/database">
+              <span class="menu-b-text" >database</span>
+            </router-link>
           </a>
           <a class="menu-b hideOnMobile">
-            <span class="menu-b-text" @click="scroll('page3')" >page3</span>
-          </a>
-          <a class="menu-b hideOnMobile">
-            <a class="fas fa-search" @click="openSearchBox"></a>
+            <a class="fas fa-search" @click="openSearch = !openSearch"></a>
             <div v-if="openSearch" class="field stretchRight">
               <p class="control has-icons-right">
                 <input class="input" type="text" placeholder="search">
@@ -24,19 +28,23 @@
               </p>
             </div>
           </a>
-          <span class="hideOnDesktop burgerSpan" @click="openMobileMenuTab">
+          <span class="hideOnDesktop burgerSpan" @click="openMobileMenu = !openMobileMenu">
             <i class="fas fa-bars fa-3x burgerIcon"></i>
           </span>
       </div>
       <div class="mobileMenu hideOnDesktop stretchDown" v-if="openMobileMenu">
-          <a class="menu-M">
-            Home
+          <a class="menu-M hideOnMobile"
+            v-for="(page, i) in pages"
+            :key="page[i]"
+            @click="scroll(page)">
+            <router-link class="link" to="/">
+            <span class="menu-b-text" >{{page}}</span>
+            </router-link>
           </a>
           <a class="menu-M">
-            page2
-          </a>
-          <a class="menu-M">
-            page3
+            <router-link class="link" to="/database">
+              <span class="menu-b-text" >database</span>
+            </router-link>
           </a>
       </div>
   </div>
@@ -48,24 +56,11 @@ export default {
   data () {
     return {
       openSearch: false,
-      openMobileMenu: false
+      openMobileMenu: false,
+      pages: ['home', 'page2', 'page3']
     }
   },
   methods: {
-    openSearchBox () {
-      if (this.openSearch) {
-        this.openSearch = false
-      } else {
-        this.openSearch = true
-      }
-    },
-    openMobileMenuTab () {
-      if (this.openMobileMenu) {
-        this.openMobileMenu = false
-      } else {
-        this.openMobileMenu = true
-      }
-    },
     scroll (page) {
       this.$emit('scrollingEvent', page)
     }

@@ -16,6 +16,18 @@ app.use(express.static(path.join(__dirname, '../dist')))
 
 /** ************* USERS ***************/
 
+function asyncWrap (fn) {
+  return (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+}
+
+app.get('/users', asyncWrap(async (req, res) => {
+  res.send(db.users.find())
+}))
+
+// app.get('/onlineUsers', asyncWrap(async (req, res) => {
+//   res.send(pvp.getOnlineUsers())
+// }))
+
 app.post('/users/add', function (req, res) {
   const newUser = {
     username: req.body.username,
